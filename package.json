@@ -1,0 +1,27 @@
+{
+  "name": "checkpointm1",
+  "version": "1.0.0",
+  "description": "Henry - Checkpoint M1",
+  "main": "checkpoint.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --collectCoverage=false"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "jest": "^27.0.4"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jest/test-result": "^27.0.2",
+    "chai": "^4.3.4",
+    "jest-util": "^27.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  }
+}
