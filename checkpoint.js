@@ -68,7 +68,7 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 // secuenciaHenry(0) // 2  ya que el elemento de la posición 0 es cero
 // secuenciaHenry(1) // 9 ya que el elemento de la posición 1 es 1
 // secuenciaHenry(5) // 289305 ya que el elemento de la posición 5 es 289305
-// Para números negativos de n debe devolver false
+// Para números negativos de n debe devolver null
 function secuenciaHenry(obj, n) {
   // Tu código aca:
 
