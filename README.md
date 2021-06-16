@@ -1,5 +1,10 @@
 # M1 - Checkpoint
 
+<p align="left">
+  <img width=250 src="yoda.jpg" />
+</p>
+
+
 ### Instrucciones
 
 Te vamos a brindar los tests preparados, tu tarea es completar el código en `checkpoint.js` de tal forma que pasen la mayoría de los tests. Para ejecutar los tests, primero debes ejecutar el comando `npm install` dentro de esta carpeta (`CP-M1`). Luego, en esta misma carpeta ejecutar `npm test`.
