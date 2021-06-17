@@ -24,7 +24,7 @@ const {
 // const genealogyTree = {
 //   "Mona Simpson": [],
 //   "Marge Simpson": ["Lisa Simpson", "Maggie Simpson"],
-//   "Jacqueline Bouvier": ["Marge Simpson", "Patty Bouvier", "Selma Bouvier"],
+//   "Jacqueline Bouvier": [ "Patty Bouvier", "Marge Simpson", "Selma Bouvier"],
 //   "Patty Bouvier": [],
 //   "Selma Bouvier": ["Ling Bouvier"],
 //   "Edwina": ["Abigail Simpson"],
@@ -45,6 +45,7 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 
 // EJERCICIO 2
 // Secuencia inventada: f(n) = f(n-1) x f(n-2) - f(n-2)
+// Siendo F, secuenciaHenry.
 // Donde las primeras dos posiciones son dadas por el parametro recibidos y a partir de
 // la siguiente se calcula como la multiplicación de los 2 números anteriores restados al número anterior.
 // object es un objeto del cual debemos obtener f(0) y f(1) siguiendo la siguiente lógica:
@@ -59,7 +60,7 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 //   z: []
 // }
 // deberíamos tener los siguientes 2 valores iniciales
-// f(0) = 2 y f(1) = 9 (Ya que 1 y 7 son las dos propiedades numéricas y los 3 arreglos que están
+// secuenciaHenry(0) = 2 y secuenciaHenry(1) = 9 (Ya que 1 y 7 son las dos propiedades numéricas y los 3 arreglos que están
 // como valores del objeto suman 9 entradas entre los tres (1,2,3,'F','r','a','n','c','o!').
 // A partir de ahí la tercera posición sería  9 x 2 - 2 = 16 y así sucesivamente
 // La función secuenciaHenry debe devolver el enésimo numero de la serie, por ejemplo para el objeto
@@ -126,7 +127,9 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
 //    Lista 2: Head --> 4 --> 13 --> 2 --> null
 //    Lista nueva luego de aplicar mergeLinkedLists:
 //             Head --> 1 --> 4 --> 7 --> 13 --> 20 --> 2 --> null
-
+// Nota: las listas enlazadas mergeadas intercalandose.
+// El nodo 1 de la lista 1, se conecta con el nodo 1 de la lista 2.
+// Continuando con el nodo 2 de la lista 2, conectandose con el nodo 2 de la lista 2.
 var mergeLinkedLists = function(linkedListOne, linkedListTwo){
   // Tu código aca:
 
@@ -162,6 +165,27 @@ var mergeLinkedLists = function(linkedListOne, linkedListTwo){
 //  - castleOne: la cantidad de puntos de resistencia finales del player one
 //  - castleTwo: la cantidad de puntos de resistencia finales del player two
 // NOTA: Ambos mazos contienen la misma cantidad de cartas
+
+// Ejemplo:
+// Los jugadores levantan 2 cartas cada uno.
+// La primera carta del jugador uno va a atacar a la segunda carta del jugador dos
+// La primer carta del jugador dos va a atacar a la segunda carta del jugador uno
+//
+// La primer carta del jugador 1 es esta{attack: 5, defense: 5, type: 'Protector'}
+// Y la segunda {attack: 15, defense: 10, type: 'Neutral'}
+
+// La primer carta del segundo jugador {attack: 10, defense: 26, type: 'Destructor'}
+// La segunda carta del segundo jugador {attack: 5, defense: 26, type: 'Neutral'}
+
+// el jugador 1 Ataca con su primer carta a la segunda del jugador 2.
+// Como el jugador 1 NO tiene un potenciado de ataque(destructor), no obtiene bonus. Hace 5 de daño, el jugador dos
+// tiene 26 de defensa, como no supero el valor de defensa, su castillo no recibe daño
+
+// El segundo jugador ataca con su primer carta a la segunda carta del jugador uno
+// La primer carta del jugador dos, tiene el type Destructor, entonces su ataque es 10 * 2, es decir 20.
+// y la defensa del jugador uno, su segunda carta, es de 10, y como su tipo es neutral, se mantiene en 10
+// el jugador 1 recibe 10 de daño en su castillo.
+// Una vez terminado eso, pasa a la siguiente ronda.
 
 
 var cardGame = function(playerOneCards, playerTwoCards){
