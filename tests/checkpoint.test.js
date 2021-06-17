@@ -21,7 +21,7 @@ describe('Checkpoint Tests', function() {
     const genealogyTree = {
       "Mona Simpson": [],
       "Marge Simpson": ["Lisa Simpson", "Maggie Simpson"],
-      "Jacqueline Bouvier": ["Marge Simpson", "Patty Bouvier", "Selma Bouvier"],
+      "Jacqueline Bouvier": ['Patty Bouvier', 'Marge Simpson', 'Selma Bouvier'],
       "Patty Bouvier": [],
       "Selma Bouvier": ["Ling Bouvier"],
       "Edwina": ["Abigail Simpson"],
@@ -137,13 +137,21 @@ describe('Checkpoint Tests', function() {
   });
 
   describe('EJERCICIO 6: cardGame', function() {
-    var playerOne = new Queue();
-    var playerOneCopy = new Queue()
-    var playerTwo = new Queue();
-    var strongPlayer = new Queue();
-    var weakPlayer = new Queue();
-
+    
+		var playerOne
+		var playerOneCopy
+		var playerTwo
+		var strongPlayer
+		var weakPlayer
+    
     beforeEach(function() {
+      
+      playerOne = new Queue();
+      playerOneCopy = new Queue();
+      playerTwo = new Queue();
+      strongPlayer = new Queue();
+      weakPlayer = new Queue();
+      
       // Player One - Castle 100 --> 90
       playerOne.enqueue({attack: 5, defense: 5, type: 'Protector'});
       playerOne.enqueue({attack: 15, defense: 10, type: 'Neutral'});
