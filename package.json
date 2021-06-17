@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --collectCoverage=false"
+    "test": "node ./.github/action_activate.js && jest --testResultsProcessor ./.github/reporter.js",
+    "test:ci": "jest --testResultsProcessor ./.github/reporter.js",
+    "test:old": "jest"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
@@ -17,8 +19,12 @@
   "license": "ISC",
   "dependencies": {
     "@jest/test-result": "^27.0.2",
+    "@supabase/supabase-js": "^1.15.1",
     "chai": "^4.3.4",
-    "jest-util": "^27.0.2"
+    "git-remote-origin-url": "^3.1.0",
+    "git-url-parse": "^11.4.4",
+    "jest-util": "^27.0.2",
+    "simple-git": "^2.40.0"
   },
   "jest": {
     "verbose": true,
