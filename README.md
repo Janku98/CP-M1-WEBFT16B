@@ -23,4 +23,4 @@ Una vez terminado el checkpoint, subir los cambios a tu repositorio.
 
 ### Condiciones de aprobación
 
-Para aprobar el checkpoint es necesario contar con un mínimo de 17 tests pasando correctamente sobre los 25 totales.
+Para aprobar el checkpoint es necesario contar con un mínimo de 16 tests pasando correctamente sobre los 24 totales.
