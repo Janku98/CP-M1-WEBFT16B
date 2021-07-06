@@ -58,9 +58,6 @@ describe('Checkpoint Tests', function() {
     it('Debería devolver 289305 cuando n es 5 y obj el mostrado en el ejemplo', function() {
       expect(secuenciaHenry(obj, 5)).to.equal(289305);
     });
-    it('Debería devolver  cuando n es 10 y obj el mostrado en el ejemplo', function() {
-      expect(secuenciaHenry(obj, 7)).to.equal(179446568646375);
-    });
     it('Debería devolver null cuando n es negativo', function() {
       expect(secuenciaHenry(obj, -3)).to.equal(null);
     });
