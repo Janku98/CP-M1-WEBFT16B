@@ -45,23 +45,26 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 
 // EJERCICIO 2
 // Secuencia inventada: f(n) = f(n-1) x f(n-2) - f(n-2)
-// Siendo F, secuenciaHenry.
+// Siendo f, secuenciaHenry.
 // Donde las primeras dos posiciones son dadas por el parametro recibidos y a partir de
 // la siguiente se calcula como la multiplicación de los 2 números anteriores restados al número anterior.
 // object es un objeto del cual debemos obtener f(0) y f(1) siguiendo la siguiente lógica:
-// f(0) será un número igual a la cantidad de propiedades del objeto que sean números
-// f(1) será un número igual a la suma de las longitudes de arreglos que sean valores de alguna propiedad
+// f(0) será el valor de la propiedad llamada 'first'
+// f(1) será un número igual a la cantidad de propiedades de obj
 // Por ejemplo si recibimos: 
 // var obj = {
 //   1: true,
-//   a: [1,2,3],
+//   first: 2,
 //   7: ['F','r','a','n','c','o!'],
 //   h: {a: 1},
-//   z: []
+//   z: [],
+//   a: 1,
+//   b: 2,
+//   c: 3,
+//   d: 4
 // }
 // deberíamos tener los siguientes 2 valores iniciales
-// secuenciaHenry(0) = 2 y secuenciaHenry(1) = 9 (Ya que 1 y 7 son las dos propiedades numéricas y los 3 arreglos que están
-// como valores del objeto suman 9 entradas entre los tres (1,2,3,'F','r','a','n','c','o!').
+// secuenciaHenry(0) = 2 y secuenciaHenry(1) = 9
 // A partir de ahí la tercera posición sería  9 x 2 - 2 = 16 y así sucesivamente
 // La función secuenciaHenry debe devolver el enésimo numero de la serie, por ejemplo para el objeto
 // antes mencionado:
@@ -70,6 +73,8 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 // secuenciaHenry(1) // 9 ya que el elemento de la posición 1 es 1
 // secuenciaHenry(5) // 289305 ya que el elemento de la posición 5 es 289305
 // Para números negativos de n debe devolver null
+// PISTA: Pueden utilizar el método Object.keys() para f(1)
+
 function secuenciaHenry(obj, n) {
   // Tu código aca:
 
@@ -111,8 +116,6 @@ LinkedList.prototype.size = function(){
 //    y la función debería haber devuelto true
 // Ejemplo 2:
 //    Suponiendo que se pide una posición inválida: removeFromPos(8) --> false
-// PISTA: Vas a necesitar guardar la referencia a la posición previa y la actual de cada
-// nodo a intercambiar
 
 LinkedList.prototype.switchPos = function(pos1, pos2){
   // Tu código aca:
@@ -146,46 +149,36 @@ var mergeLinkedLists = function(linkedListOne, linkedListTwo){
 // van a representar mazos de cartas de dos jugadores debemos determinar quien va a ser el ganador
 // de este juego que va a tener la siguiente dinámica:
 // - Los jugadores tendrán que defender su "Castillo" que contiene un total de 100 puntos de resistencia
-// - Cada carta tendrá puntos de ataque (attack), puntos de defensa (defense) y tipo (type)
+// - Cada carta tendrá puntos de ataque (attack) y puntos de defensa (defense)
 // - Ambos jugadores van a sacar las dos primeras cartas de su mazo
 //      * La primera carta será su carta asignada para atacar
 //      * La segunda carta será su carta asignada para defender
 // - La carta asignada para atacar del jugador uno se enfrentará contra la carta asignada para defender
 //   del jugador dos y viceversa. Si el ataque supera los puntos de defensa el daño sobrante será aplicado
 //   sobre el castillo.
-// - El tipo de la carta puede ayudar al ataque o la defensa. Existen 3 tipos ('Destructor', 'Protector', 'Neutral')
-//      * Destructor: si la carta de ataque contiene este tipo se duplicarán sus puntos de ataque
-//      * Protector: si la carta de defensa contiene este tipo se dupicarán sus puntos de defensa
-//      * Neutral: Lamentablemente no aporta nada extra
 // - El juego finaliza cuando alguno de los dos castillos se quede sin puntos de resistencia o cuando los mazos
 //   se acaben. En este último caso ganará aquel jugador que tenga mayor cantidad de puntos de resistencia
 //   restantes en su castillo.
-// La función deberá devolver on objeto que contenga 3 propiedades:
-//  - winner: 'PLAYER ONE' o 'PLAYER TWO' dependiendo quien sea el ganador. En el caso de empate devolver 'TIE'
-//  - castleOne: la cantidad de puntos de resistencia finales del player one
-//  - castleTwo: la cantidad de puntos de resistencia finales del player two
+// La función deberá devolver un string indicando al ganador: 'PLAYER ONE' o 'PLAYER TWO' (Respetar mayúsculas) o
+// 'TIE' en el caso de empate
 // NOTA: Ambos mazos contienen la misma cantidad de cartas
-
+//
 // Ejemplo:
 // Los jugadores levantan 2 cartas cada uno.
 // La primera carta del jugador uno va a atacar a la segunda carta del jugador dos
 // La primer carta del jugador dos va a atacar a la segunda carta del jugador uno
 //
-// La primer carta del jugador 1 es esta{attack: 5, defense: 5, type: 'Protector'}
-// Y la segunda {attack: 15, defense: 10, type: 'Neutral'}
-
-// La primer carta del segundo jugador {attack: 10, defense: 26, type: 'Destructor'}
-// La segunda carta del segundo jugador {attack: 5, defense: 26, type: 'Neutral'}
-
-// el jugador 1 Ataca con su primer carta a la segunda del jugador 2.
-// Como el jugador 1 NO tiene un potenciado de ataque(destructor), no obtiene bonus. Hace 5 de daño, el jugador dos
-// tiene 26 de defensa, como no supero el valor de defensa, su castillo no recibe daño
-
-// El segundo jugador ataca con su primer carta a la segunda carta del jugador uno
-// La primer carta del jugador dos, tiene el type Destructor, entonces su ataque es 10 * 2, es decir 20.
-// y la defensa del jugador uno, su segunda carta, es de 10, y como su tipo es neutral, se mantiene en 10
-// el jugador 1 recibe 10 de daño en su castillo.
-// Una vez terminado eso, pasa a la siguiente ronda.
+// Primer carta del jugador 1 (ATAQUE) vs Segunda carta del jugador 2 (DEFENSA): 
+// {attack: 5, defense: 5} vs {attack: 5, defense: 26}
+// Ataque 5 vs Defensa 20 --> 5 no supera 20 --> No hay daño sobre el castillo
+//
+// Primer carta del jugador 2 (ATAQUE) vs Segunda carta del jugador 1 (DEFENSA): 
+// {attack: 20, defense: 26} vs {attack: 15, defense: 10}
+// Ataque 20 vs Defensa 10 --> 20 supera a 10 --> Como hay 10 puntos de diferencia esa cantidad de daño es aplicada
+// al castillo del jugador 1 
+//
+// Una vez terminada la ronda, se procede a repetir lo mismo con las siguientes 2 cartas de cada jugaodr hasta
+// finalizar el juego.
 
 
 var cardGame = function(playerOneCards, playerTwoCards){
