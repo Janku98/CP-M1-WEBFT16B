@@ -9,7 +9,17 @@
   "scripts": {
     "test": "node ./.github/action_activate.js && jest --testResultsProcessor ./.github/reporter.js",
     "test:ci": "jest --testResultsProcessor ./.github/reporter.js",
-    "test:old": "jest"
+    "test:old": "jest",
+    "test:1": "jest 1.test.js",
+    "test:2": "jest 2.test.js",
+    "test:3": "jest 3.test.js",
+    "test:4": "jest 4.test.js",
+    "test:5": "jest 5.test.js",
+    "test:6": "jest 6.test.js",
+    "test:7": "jest 7.test.js",
+    "test:8": "jest 8.test.js",
+    "test:9": "jest 9.test.js",
+    "test:10": "jest 10.test.js"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
