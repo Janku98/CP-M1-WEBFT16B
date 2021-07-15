@@ -6,13 +6,19 @@ const {
 } = require('../checkpoint.js');
 
 describe('EJERCICIO 2: secuencia Henry', function() {
-  var obj = {
-    1: true,
-    a: [1,2,3],
-    7: ['F','r','a','n','c','o!'],
-    h: {a: 1},
-    z: []
+  
+ var obj = {
+   1: true,
+   first: 2,
+   7: ['F','r','a','n','c','o!'],
+   h: {a: 1},
+   z: [],
+   a: 1,
+   b: 2,
+   c: 3,
+   d: 4
   }
+ 
   it('Debería devolver 2 cuando n es 0 y obj el mostrado en el ejemplo', function() {
     expect(secuenciaHenry(obj, 0)).to.equal(2);
   });
