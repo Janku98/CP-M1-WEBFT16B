@@ -11,7 +11,7 @@ gitRemoteOriginUrl()
       throw new Error(
         `ERROR EN EL REPOSITORIO
 Debes clonar el mismo desde tu cuenta y no desde http://github.com/${github}/${repo}
-te recomendamos volver a clonar desde la cuenta correcta o contacta a tu instruvtor.`
+te recomendamos volver a clonar desde la cuenta correcta o contacta a tu instructor.`
       );
     }
     try {
