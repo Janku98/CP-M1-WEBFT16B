@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node ./.github/action_activate.js && majestic --app",
+    "test": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles",
     "test:ci": "node ./.github/prepare.js && jest --verbose --detectOpenHandles --testResultsProcessor ./.github/reporter.js",
     "test:old": "jest"
   },
@@ -16,6 +16,10 @@
     "jest": "^27.0.4"
   },
   "author": "",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.10.0"
+  },
   "license": "ISC",
   "dependencies": {
     "@jest/test-result": "^27.0.2",
@@ -25,7 +29,6 @@
     "git-remote-origin-url": "^3.1.0",
     "git-url-parse": "^11.4.4",
     "jest-util": "^27.0.2",
-    "majestic": "https://github.com/soyHenry/testing-cp-ui.git",
     "simple-git": "^2.40.0"
   },
   "jest": {
