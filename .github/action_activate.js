@@ -21,7 +21,8 @@ te recomendamos volver a clonar desde la cuenta correcta o contacta a tu instruc
       if (fs.existsSync(pathName) && !fs.existsSync(pathNameRenamed)) {
         fs.renameSync(pathName, pathNameRenamed);
         const git = simpleGit();
-        git.add([pathToAdd]);
+        git.add('./.github/*');
+        git.commit("ci");
       }
     } catch {}
   })
