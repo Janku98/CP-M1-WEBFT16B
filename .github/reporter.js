@@ -11,7 +11,6 @@ module.exports = function report(data) {
       numFailedTestSuites,
       numTotalTests,
     } = data;
-    let { testResults } = data;
     if (numTotalTests > 0)
       gitRemoteOriginUrl()
         .then((remote) => {
