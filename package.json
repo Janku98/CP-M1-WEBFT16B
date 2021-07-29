@@ -7,30 +7,35 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node ./.github/action_activate.js && jest --testResultsProcessor ./.github/reporter.js",
-    "test:ci": "jest --testResultsProcessor ./.github/reporter.js",
+    "test": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles",
+    "test:ci": "node ./.github/prepare.js && jest --verbose --detectOpenHandles --testResultsProcessor ./.github/reporter.js",
     "test:old": "jest",
-    "test:1": "jest 1.test.js",
-    "test:2": "jest 2.test.js",
-    "test:3": "jest 3.test.js",
-    "test:4": "jest 4.test.js",
-    "test:5": "jest 5.test.js",
-    "test:6": "jest 6.test.js",
-    "test:7": "jest 7.test.js",
-    "test:8": "jest 8.test.js",
-    "test:9": "jest 9.test.js",
-    "test:10": "jest 10.test.js"
+    "test:1": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 01.test.js",
+    "test:2": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 02.test.js",
+    "test:3": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 03.test.js",
+    "test:4": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 04.test.js",
+    "test:5": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 05.test.js",
+    "test:6": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 06.test.js",
+    "test:7": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 07.test.js",
+    "test:8": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 08.test.js",
+    "test:9": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 09.test.js",
+    "test:10": "node ./.github/action_activate.js && jest --verbose --detectOpenHandles 10.test.js"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
     "jest": "^27.0.4"
   },
   "author": "",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.10.0"
+  },
   "license": "ISC",
   "dependencies": {
     "@jest/test-result": "^27.0.2",
-    "@supabase/supabase-js": "^1.15.1",
+    "axios": "^0.21.1",
     "chai": "^4.3.4",
+    "chalk": "^4.1.1",
     "git-remote-origin-url": "^3.1.0",
     "git-url-parse": "^11.4.4",
     "jest-util": "^27.0.2",
@@ -38,6 +43,6 @@
   },
   "jest": {
     "verbose": true,
-    "testURL": "http://localhost/"
+    "detectOpenHandles": true
   }
 }
