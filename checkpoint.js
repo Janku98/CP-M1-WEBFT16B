@@ -39,7 +39,19 @@ const {
 
 var isAncestor = function(genealogyTree, ancestor, descendant){
   // Tu código aca:
-
+if (genealogyTree[ancestor].length <= 0){
+  return false
+}
+for (var i = 0 ; i< genealogyTree[ancestor].length; i++){
+  var aux = genealogyTree[ancestor][i]
+  if (aux === descendant){
+    return true
+  }
+  if (genealogyTree[aux].length > 0){
+    return isAncestor(genealogyTree, aux, descendant)
+  }
+}
+return false
 }
 
 
@@ -77,6 +89,16 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 
 function secuenciaHenry(obj, n) {
   // Tu código aca:
+if (n === 0){
+  return obj.first
+}
+if (n === 1){
+  return Object.keys(obj).length
+}
+if (n < 0){
+  return null
+}
+return (secuenciaHenry(obj, n - 1) * secuenciaHenry(obj, n - 2) - secuenciaHenry(obj, n - 2))
 
 }
 
@@ -98,6 +120,19 @@ function secuenciaHenry(obj, n) {
 
 LinkedList.prototype.size = function(){
   // Tu código aca:
+  var contador = 1;
+  var current= this.head;
+  if (current === null){
+    return 0
+  }
+  if (current.next=== null){
+    return 1
+  }
+  while (current.next){
+    contador++;
+    current = current.next
+  }
+  return contador
 
 }
 
@@ -119,6 +154,30 @@ LinkedList.prototype.size = function(){
 
 LinkedList.prototype.switchPos = function(pos1, pos2){
   // Tu código aca:
+  var current1= this.head;
+  var current2= this.head;
+  if (pos1 > this.size() || pos2 > this.size() || pos1 < 0 || pos2 < 0){
+    return false
+  }
+  else if (this.head === null){
+    return false
+  }
+  else{
+    for (var i = 0; i<pos1; i++){
+      current1= current1.next
+      
+    }
+    let valor1= current1.value
+    for (var i = 0; i<pos2; i++){
+      current2= current2.next
+      
+    }
+    let valor2= current2.value
+    current1.value= valor2
+    current2.value= valor1
+    return true
+  } 
+
 
 }
 
@@ -135,7 +194,17 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
 // Continuando con el nodo 2 de la lista 2, conectandose con el nodo 2 de la lista 2.
 var mergeLinkedLists = function(linkedListOne, linkedListTwo){
   // Tu código aca:
-
+var nuevalista= new LinkedList
+  var current1= linkedListOne.head
+  var current2= linkedListTwo.head
+while (current1 != null && current2 != null){
+  nuevalista.add(current1.value);
+  nuevalista.add(current2.value)
+  current1= current1.next
+  current2= current2.next
+  
+}
+return nuevalista
 }
 
 
@@ -183,6 +252,33 @@ var mergeLinkedLists = function(linkedListOne, linkedListTwo){
 
 var cardGame = function(playerOneCards, playerTwoCards){
   // Tu código aca:
+  var castillo1 = 100;
+  var castillo2= 100;
+  while (castillo1 > 0 && castillo2 > 0){
+    
+  //-----
+  var cartaplayer1ataque= playerOneCards.dequeue()
+  var cartaplayer1defensa= playerOneCards.dequeue()
+  var cartaplayer2ataque= playerTwoCards.dequeue()
+  var cartaplayer2defensa=playerTwoCards.dequeue()
+  //----
+  if (cartaplayer1ataque===undefined){break}
+  if (cartaplayer1defensa===undefined){break}
+  if (cartaplayer2defensa===undefined){break}
+  if (cartaplayer2ataque===undefined){break}
+
+  var ataquePlayer1= cartaplayer2defensa.defense - cartaplayer1ataque.attack 
+  if (ataquePlayer1 < 0) {castillo2 += ataquePlayer1}
+
+  var ataquePlayer2= cartaplayer1defensa.defense - cartaplayer2ataque.attack
+  if (ataquePlayer2 < 0){castillo1 += ataquePlayer2}
+  //---
+  if (castillo1<= 0){break}
+  if (castillo2<= 0){break}  
+}
+if (castillo1 > castillo2){return 'PLAYER ONE'}
+else if (castillo2 > castillo1){return 'PLAYER TWO'}  
+else {return "TIE"}
 
 }
 
@@ -207,7 +303,23 @@ var cardGame = function(playerOneCards, playerTwoCards){
 
 BinarySearchTree.prototype.height = function(){
   // Tu código aca:
+  if (this.value === null){return 0}
 
+  if (!this.right && !this.left){return 1}
+
+  if (this.left === null) {
+    return 1 + this.right.height();
+  }
+
+  if (this.right === null) {
+    return 1 + this.left.height();
+  }
+
+  
+  var ramaizquierda = this.left.height()
+  var ramaderecha = this.right.height()
+
+  return 1 + Math.max(ramaderecha, ramaizquierda)
 }
 
 
